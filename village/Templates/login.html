@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2 class="profile">Login</h2>
+<div align="center" class="form">
+  <table align="center">
+    <tr col span=2>
+<form action="." method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Submit"/>
+</form>
+</tr>
+</table>
+</div>
+
+
+{% endblock %}

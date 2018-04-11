@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+{% for child in children %}
+
+  <!-- <a href ='/{{ child.id}}'>
+    <p>Name: {{ child.name}}</p>
+    </a>
+<a href='/user/{{child.user.username }}'>
+</a>
+    <p>Age: {{ child.child_Age }}</p>
+    <!-- <p>: {{ child.breed }}</p>
+    <p>Details: {{ child.details }}</p> -->
+
+    <!-- <a class="waves-effect waves-light btn" data-id="{{ cat.id }}">
+      Likes: {% if cat.likes > 0 %} {{ cat.likes }} {% else %} None {% endif %}
+    </a> -->
+
+
+
+{% endfor %}
+<div class="form">
+<h4 class="profile">Add a Child</h4>
+<form action='post_child/' method='post'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type='submit' value='Submit' />
+  <br />
+</form>
+</div>
+{% endblock %}

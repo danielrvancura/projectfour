@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+      <h2> Name: {{ child.child_name}}</h2>
+      <p> Gender: {{ child.gender}}</p>
+      <p> Age: {{ child.child_age }}</p>
+      <p> Details: {{child.details}}</p>
+
+      <br />
+
+
+      <br />
+      <form action="/{{ child.id }}/destroy/" method='post'>
+        {% csrf_token %}
+        <input type='submit' value='Delete' />
+      </form>
+
+
+{% endblock %}

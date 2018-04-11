@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+      <h3>Edit Child's Information</h3>
+      <form action='/{{child.id}}/edit/' method='POST'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type='submit' value='submit' />
+      </form>
+      <form action='/{{child.id}}/destroy/' method='POST'>
+        {% csrf_token %}
+        <input type='submit' value='DELETE' />
+      </form>
+
+
+{% endblock %}
