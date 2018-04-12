@@ -3,22 +3,38 @@
 <html>
   <head>
       <title>It Takes a Village</title>
-      <link rel='stylesheet' type='text/css' href='{% static "style.css" %}'>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
 
+      <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+      <link rel='stylesheet' type='text/css' href='{% static "style.css" %}'>
   </head>
   <body>
+      <div class="head">
       <h1>It Takes a Village</h1>
-      <hr />
-      <div class="profile">
-      {% if user.is_authenticated %}
-        <h3> Hello {{ user.username }}! </h3> |
-        <a href= "{% url 'profile' user.username%}">Child's Profile</a> | <a href="{% url 'post_child' %}">Add a Child</a> | <a href="{% url 'logout' %}">Logout</a>
-      {% else %}
-        <a href ="{% url 'login' %}">Login</a> | <a href="{% url 'signup'  %}">SignUp</a>
-      {% endif %}
     </div>
       <hr />
+      <div class="profileName">
+      {% if user.is_authenticated %}
+        <h3> Hello {{ user.username }}! </h3> |
+        <a href= "{% url 'index' %}">Home</a> | <a href= "{% url 'profile' user.username %}">Child's Profile</a> |
+        <a href="{% url 'post_child' %}">Add a Child</a> | <a href="{% url 'logout' %}">Logout</a> |
+      {% else %}
+        <a href= "{% url 'index' %}">Home</a> | <a href ="{% url 'login' %}">Login</a> | <a href="{% url 'signup'  %}">SignUp</a>
+      {% endif %}
+    </div>
+
+      <hr />
+      <div>
+        <p class="profile">
+          Welcome to It Takes a Village. One of the challenges special needs children face is
+          making connections with kids their own age in their area. This site is designed to help parents with special needs
+          children connect with other families in similar situations. We encourage parents to make connections to
+          share their struggles and victories to help other families out. Teachers and therapists of
+          special needs children are also welcome to join to share their insight. Whether it's making playdates, finding recommended therapists,
+          or parents just needing to find a babysitter, It Takes a Village is here to help.
+
+        </p>
+      </div>
 
 
       {% block content %}

@@ -1,6 +1,7 @@
 h1 {
   color: rebeccapurple;
   text-align: center;
+  font-family: 'Titillium Web', sans-serif;
 }
 footer {
   text-align: center;
@@ -8,19 +9,38 @@ footer {
 .profileName {
     color: rebeccapurple;
     text-align: center;
+    font-family: 'Titillium Web', sans-serif;
 }
 .profile {
     color: rebeccapurple;
     text-align: center;
-}
+    font-size: 20pt;
+    font-family: 'Titillium Web', sans-serif;
+    margin-left: 15%;
+    margin-right: 15%;
 
+}
 .form {
-  width: 500px;
-  margin-left: 33%;
+  justify-content: center;
+  display: flex;
   text-align: center;
 }
 
-table {
-  margin: 0 auto;
-  align: center;
-  }
+.edit {
+  text-align: center;
+  font-family: 'Titillium Web', sans-serif;
+}
+body {
+  background-color: #CAD3FA;
+  /* align-content: center; */
+}
+label {
+  font-size: 12pt;
+  color: black;
+  text-align: center;
+}
+.delete {
+  justify-content: center;
+  display: flex;
+  text-align: center;
+}

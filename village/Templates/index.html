@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load static %}
 
 {% block content %}
 {% for child in children %}
@@ -20,7 +20,7 @@
 
 
 {% endfor %}
-<div class="form">
+<!-- <div class="form">
 <h4 class="profile">Add a Child</h4>
 <form action='post_child/' method='post'>
   {% csrf_token %}
@@ -28,5 +28,5 @@
   <input type='submit' value='Submit' />
   <br />
 </form>
-</div>
+</div> -->
 {% endblock %}

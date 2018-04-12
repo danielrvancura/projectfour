@@ -1,23 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
 
   {% block content %}
-<h3 class="profileName">{{ username }}'s profile:</h3>
+<h4 class="profileName">{{ username }}'s profile:</h4>
 <!-- <h2>Profile</h2> -->
 {% for child in children %}
     <!-- <a href='/{{ child.id }}'> -->
-      <h4 class="profile">Child's Name: {{ child.child_name }}</h4>
-      <h4 class="profile">Age: {{ child.child_age }}</h4>
-      <h4 class="profile">Gender: {{ child.gender }}</h4>
-      <h4 class="profile">Location: {{ child.location }}</h4>
-      <h4 class="profile">Affliction: {{ child.affliction }}</h4>
-      <h4 class="profile">Details: {{ child.details }}</h4>
+      <h5 class="profile">Child's Name: {{ child.child_name }}</h5>
+      <h5 class="profile">Age: {{ child.child_age }}</h5>
+      <h5 class="profile">Gender: {{ child.gender }}</h5>
+      <h5 class="profile">Location: {{ child.location }}</h5>
+      <h5 class="profile">Affliction: {{ child.affliction }}</h5>
+      <h5 class="profile">Details: {{ child.details }}</h5>
     <!-- </a> -->
-    <div class="profile">
-    <h5> Edit Child's Information </h5>
+    <div class="edit">
+    
     <form action='/{{child.id}}/edit/' method='GET'>
       {% csrf_token %}
       {{ form.as_p }}
-      <input type='submit' value='Submit' />
+      <input type='submit' value="Edit Child's Information" />
     </form>
   </div>
   {% endfor %}

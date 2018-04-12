@@ -23,12 +23,16 @@ def show(request, child_id):
     return render(request, 'show.html', {'child': child})
 
 def post_child(request):
-    form = ChildForm(request.POST)
-    if form.is_valid():
-        child = form.save(commit = False)
-        child.user = request.user
-        child.save()
-    return HttpResponseRedirect('/')
+    form = ChildForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            child = form.save(commit = False)
+            child.user = request.user
+            child.save()
+        print(request.user)
+        return HttpResponseRedirect('/user/' + str(request.user))
+    else:
+        return render(request, 'add_child.html', {'form': form})
 
 def profile(request, username):
     user = User.objects.get(username=username)
@@ -71,18 +75,6 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form':form})
-
-# def like_cat(request):
-#     cat_id = request.GET.get('cat_id', None)
-#     likes = 0
-#     if (cat_id):
-#         cat = Cat.objects.get(id=int(cat_id))
-#         if cat is not None:
-#             likes = cat.likes + 1
-#             cat.likes = likes
-#             cat.save()
-#     return HttpResponse(likes)
-
 
 def edit_child(request, child_id):
     instance = get_object_or_404(Child, id=child_id)

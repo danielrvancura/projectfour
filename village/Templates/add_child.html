@@ -2,15 +2,16 @@
 {% load static %}
 
 {% block content %}
-<h2 class="profile">Login</h2>
+
+
+<h4 class="profile">Add a Child</h4>
 <div class="form">
-<form action="." method="POST">
+<form action='/post_child/' method='POST'>
   {% csrf_token %}
   {{ form.as_p }}
-  <input type="submit" value="Submit"/>
+  <input type='submit' value='Submit' />
+  <br />
 </form>
-
 </div>
-
 
 {% endblock %}
