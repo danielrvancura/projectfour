@@ -10,17 +10,22 @@
   </head>
   <body>
       <div class="head">
-        <h1>It Takes a Village</h1><
+        <h1>It Takes a Village</h1>
     </div>
       <hr />
       <div class="profileName">
       {% if user.is_authenticated %}
         <h3> Hello {{ user.username }}! </h3> |
         <a href= "{% url 'index' %}">Home</a> | <a href= "{% url 'profile' user.username %}">Child's Profile</a> |
-        <a href="{% url 'post_child' %}">Add a Child</a> | <a href="{% url 'logout' %}">Logout</a> |
+        <a href="{% url 'post_child' %}">Add a Child</a> | <a href="{% url 'logout' %}">Logout</a> | <a href="{% url 'search'  %}">Search</a> |
       {% else %}
         <a href= "{% url 'index' %}">Home</a> | <a href ="{% url 'login' %}">Login</a> | <a href="{% url 'signup'  %}">SignUp</a>
       {% endif %}
+      <!-- <form class="form" action=' ' method="GET">
+            <input  type="text" name='q' placeholder="Search by zip code"/>
+            <input type='submit' value="Search"/>
+
+          </form> -->
     </div>
 
       <hr />

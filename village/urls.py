@@ -12,4 +12,5 @@ urlpatterns = [
     path('<int:child_id>/edit/', views.edit_child, name='edit_child'),
     path('<int:child_id>/destroy/', views.delete_child, name='delete_child'),
     # path('<int:cat_id>/toy/create/', views.create_toy, name='create_toy'),
+    path('search/', views.search, name='search')
 ]

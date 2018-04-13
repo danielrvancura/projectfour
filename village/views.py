@@ -34,6 +34,19 @@ def post_child(request):
     else:
         return render(request, 'add_child.html', {'form': form})
 
+def search(request, location):
+    if request.method == 'GET': # this will be GET now
+        location =  request.GET.get('q') # do some research what it does
+        try:
+            status = Child.objects.filter(location=location) # filter returns a list so you might consider skip except part
+        except Child.DoesNotExist:
+            status = None
+            print("location" )
+        return render(request, 'show_location.html', {'location':location})
+        print("location" )
+    else:
+        return render(request,'search.html',{})
+
 def profile(request, username):
     user = User.objects.get(username=username)
     children = Child.objects.filter(user=user)
@@ -49,7 +62,7 @@ def login_view(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponseRedirect('/')
+                    return HttpResponseRedirect('/user/' + str(request.user))
                 else:
                     print("This account has been disabled")
             else:
@@ -71,7 +84,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('/')
+            return HttpResponseRedirect('/post_child/')
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form':form})
@@ -101,7 +114,7 @@ def delete_child(request, child_id):
     if request.method == 'POST':
         instance = Child.objects.get(pk=child_id)
         instance.delete()
-        return redirect('index')
+        return HttpResponseRedirect('/user/' + str(request.user))
 
 #find or create
 # def create_toy(request, child_id):
@@ -116,6 +129,21 @@ def delete_child(request, child_id):
 #         child = Child.objects.get(pk=child_id)
 #         toy.cats.add(cat)
 #         return redirect('show_toy', toy.id)
+#     else:
+#         return redirect('show', cat_id)
+#
+# def create_connection(request, location):
+#     form = ChildForm(request.POST)
+#     if form.is_valid():
+#         try:
+#             toy = Toy.objects.get(name=form.data.get('name'))
+#         except:
+#             toy = None
+#         if toy is None:
+#             toy = form.save()
+#         child = Child.objects.get(pk=child_id)
+#         toy.cats.add(cat)
+#         return redirect('show_location', toy.id)
 #     else:
 #         return redirect('show', cat_id)
 
